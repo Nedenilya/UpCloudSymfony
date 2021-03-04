@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #CDD6DD;
+}
+
+header{
+	background-color: #00635D;
+}
+
+h1,h2,h3,h4,h5,h6{
+	margin: 0;
+}
+
+/* HEADER STYLES*/
+
+.header{
+	margin: 0 auto;
+	height: 80px;
+	display: flex;
+	font-family: 'Righteous';
+	align-items: center;
+	justify-content: space-between;
+	width: 1440px;
+}
+
+.logo__block{
+	display: flex;
+}
+
+.home__link{
+	text-decoration: none;
+	color: white;
+}
+
+.logo__text{
+	margin-left: 15px;
+}
+
+.logo__image{
+	width: 80px;
+	height: 50px;
+	margin-left: 27px;
+}
+
+.sign__button{
+	font-family: 'Righteous';
+	width: 128px;
+	height: 40px;
+	background: #003D39;
+	border-radius: 10px;
+	border: none;
+	color: white;
+	font-size: 24px;
+	transition: .3s linear;
+}
+
+.sign__button:hover{
+	cursor: pointer;
+	background-color: white;
+	color: black;
+}
+
+/* CONTAINER STYLES */
+
+.container{
+	width: 100%;
+	display: flex;
+}
+
+/* SIDEBAR STYLES */
+
+.sidebar__container{
+	width: 320px;
+	display: flex;
+	position: absolute;
+	left:0;
+	right:0;
+	top:80px;
+	bottom:0;
+	transform: translateX(-300px);
+	transition: .5s linear;
+}
+
+.sidebar__button{
+	background-color: #ABABAB;
+	opacity: .6;
+	width: 20px;
+	display: flex;
+	align-items: center;
+	transition: opacity .3s;
+}
+
+.sidebar__button:hover{
+	opacity: .8;
+	cursor: pointer;
+}
+
+.sidebar__arrow{
+	width: 20px;
+	transition: .5s;
+}
+
+.sidebar{
+	width: 300px;
+
+	transition: .6s;
+	background-color: #f9f9f9;
+}
+
+.upload__file{
+	background-color: #F4F4F4;
+	width: 100%;
+	height: 92px;
+	border: none;
+	font-family: 'Righteous';
+	font-size: 36px;
+	color: #00635D;
+	outline: none;
+	transition: .3s;
+}
+
+.upload__file:hover{
+	background-color: #F1F1F1;
+	font-size: 42px;
+	cursor: pointer;
+}
+
+.sidebar__item{
+	font-family: 'Righteous';
+	font-size:  24px;
+	text-align: center;
+	transition: .3s;
+}
+.sidebar__item:hover{
+	transform: scale(1.1);
+	/*background-color: #e5e5e5;*/
+	cursor: pointer;
+}
+
+/* TABLE STYLES */
+
+.uploads__table{
+	width: 100px;
+	height: 100px;
+	background-color: white;
+}
