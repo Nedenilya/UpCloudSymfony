@@ -299,20 +299,28 @@ h1,h2,h3,h4,h5,h6{
 	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 
+.body__item div{
+	padding-right: 5px;
+}
+
 .item__title{
 	width: 40%;
 }
 
 .item__extension{
 	width: 20%;
+	font-size: 15px;
+	text-align: center;
 }
 
 .item__updated{
 	width: 20%;
+	text-align: center;
 }
 
 .item__size{
 	width: 20%;
+	text-align: center;
 }
 
 /* RIGHT SIDEBAR STYLES */
