@@ -3,6 +3,7 @@ $(document).ready(function(){
 	let left_sidebar_flag = true;
 	let right_sidebar_flag = true;
 
+// left sidebar dlide
 	$('.sidebar__button').on('click', function(){
 		if(left_sidebar_flag){
 			$('.left__sidebar__container').css('transform', 'translateX(0)');
@@ -15,6 +16,7 @@ $(document).ready(function(){
 		left_sidebar_flag = !left_sidebar_flag;
 	});
 
+// right sidebar slide
 	$('.history__button').on('click', function(){
 		if(right_sidebar_flag){
 			$('.right__sidebar__container').css('transform', 'translateX(0px)');
@@ -23,6 +25,15 @@ $(document).ready(function(){
 			$('.right__sidebar__container').css('transform', 'translateX(300px)');
 		}
 		right_sidebar_flag = !right_sidebar_flag;
+	});
+
+// popap login frame
+	$('.sign__button').on('click', function(){
+		$('.login__popap').css('display', 'block');
+	});
+
+	$('.close__button').on('click', function(){
+		$('.login__popap').css('display', 'none');
 	});
 
 });

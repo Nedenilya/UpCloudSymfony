@@ -19,26 +19,28 @@
 				<input class="sign__button" type="button" value="sign up">
 			</div>
 		</div>
-		<div class="underhead__bar">
-			<div class="nav__path">
-				<h2 class="nav__item">
-					Main
-				</h2>
-				<span class="separator">
-					>
-				</span>
-				<h2 class="nav__item">
-					Item
-				</h2>
-			</div>
-			<div class="rightside__block">
-				<div class="search__container">
-					<div class="search__block">
-						<img class="search__glass" src="assets/images/search-glass.svg">
-						<input class="search__field" type="search">
-					</div>
+		<div class="underhead__bar__container">
+			<div class="underhead__bar">
+				<div class="nav__path">
+					<h2 class="nav__item">
+						Main
+					</h2>
+					<span class="separator">
+						>
+					</span>
+					<h2 class="nav__item">
+						Item
+					</h2>
 				</div>
-				<img class="history__button" src="assets/images/book.svg">
+				<div class="rightside__block">
+					<div class="search__container">
+						<div class="search__block">
+							<img class="search__glass" src="assets/images/search-glass.svg">
+							<input class="search__field" type="search">
+						</div>
+					</div>
+					<img class="history__button" src="assets/images/book.svg">
+				</div>
 			</div>
 		</div>
 	</header>
@@ -49,12 +51,22 @@
 		<!-- LEFT SIDEBAR -->
 		<div class="left__sidebar__container">
 			<div class="sidebar">
-				<input class="upload__file" type="button" value="Upload">
-				<div class="sidebar__item">
-					<p>My UpCloud</p>
+				<div class="sidebar__menu">
+					<input class="upload__file" type="button" value="Upload">
+					<div class="sidebar__item">
+						<p>My UpCloud</p>
+					</div>
+					<div class="sidebar__item">
+						<p>Viewed</p>
+					</div>
 				</div>
-				<div class="sidebar__item">
-					<p>Viewed</p>
+				<div class="storage__stat__block">
+					<div class="storage__stat__scale">
+						<div class="storage__stat__left"></div>
+					</div>
+					<div class="storage__stat__text">
+						Used 150 mb of 1 gb
+					</div>
 				</div>
 			</div>
 			<div class="sidebar__button">
@@ -308,6 +320,36 @@
 
 	</div>
 <!-- /PAGE CONTENT -->
+
+
+<!-- POPAP FRAMES -->
+<div class="login__popap">
+	<div class="login__container">
+		<span class="close__button">
+			<img class="cross__image" src="assets/images/cross.svg">
+		</span>
+
+		<form class="login__form">
+			<div class="form__container">
+				<div class="form__inputs">
+					<div class="input__block">
+						<label for="mail">E-mail</label>
+						<input class="mail input" type="mail" name="mail" placeholder="example@gmail.com">
+					</div>
+					<div class="input__block">
+						<label for="pass">Psasword</label>
+						<input class="pass input" type="password" name="pass" placeholder="password">
+					</div>
+				</div>
+				<div class="form__submit">
+					<input class="form__submit__btn" type="submit" value="Sign in">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- /POPAP FRAMES -->
+
 </body>
 
 <script src="assets/js/jquery.min.js"></script>
