@@ -15,8 +15,8 @@
 				</h1>
 			</div>
 			<div class="sign__buttons">
-				<input class="sign__button" type="button" value="sign in">
-				<input class="sign__button" type="button" value="sign up">
+				<input class="sign__button" id="signin" type="button" value="sign in">
+				<input class="sign__button" id="signup" type="button" value="sign up">
 			</div>
 		</div>
 		<div class="underhead__bar__container">
@@ -323,6 +323,7 @@
 
 
 <!-- POPAP FRAMES -->
+<!-- LOGIN POPAP -->
 <div class="login__popap">
 	<div class="login__container">
 		<span class="close__button">
@@ -348,6 +349,44 @@
 		</form>
 	</div>
 </div>
+<!-- /LOGIN POPAP -->
+
+<!-- REGISTER POPAP -->
+<div class="login__popap2">
+	<div class="login__container">
+		<span class="close__button">
+			<img class="cross__image" src="assets/images/cross.svg">
+		</span>
+
+		<form class="login__form">
+			<div class="form__container">
+				<div class="form__inputs">
+					<div class="input__block">
+						<label for="name">Name</label>
+						<input class="name input" type="text" name="name" placeholder="Name">
+					</div>
+					<div class="input__block">
+						<label for="mail">E-mail</label>
+						<input class="mail input" type="mail" name="mail" placeholder="example@gmail.com">
+					</div>
+					<div class="input__block">
+						<label for="pass">Psasword</label>
+						<input class="pass input" type="password" name="pass" placeholder="Password">
+					</div>
+					<div class="input__block">
+						<label for="pass">Psasword again</label>
+						<input class="pass input" type="password" name="pass" placeholder="Password again">
+					</div>
+				</div>
+				<div class="form__submit">
+					<input class="form__submit__btn" type="submit" value="Sign in">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- /REGISTER POPAP -->
+
 <!-- /POPAP FRAMES -->
 
 </body>

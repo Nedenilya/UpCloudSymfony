@@ -28,12 +28,20 @@ $(document).ready(function(){
 	});
 
 // popap login frame
-	$('.sign__button').on('click', function(){
+	$('#signin').on('click', function(){
 		$('.login__popap').css('display', 'block');
 	});
 
+// popap register frame
+	$('#signup').on('click', function(){
+		alert('qwe');
+		$('.popap2').css('display', 'block');
+	});
+
+// close frame button
 	$('.close__button').on('click', function(){
 		$('.login__popap').css('display', 'none');
+		$('.popap2').css('display', 'none');
 	});
 
 });
