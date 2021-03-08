@@ -34,14 +34,22 @@ $(document).ready(function(){
 
 // popap register frame
 	$('#signup').on('click', function(){
-		alert('qwe');
-		$('.popap2').css('display', 'block');
+		$('.register__popap').css('display', 'block');
 	});
 
 // close frame button
 	$('.close__button').on('click', function(){
 		$('.login__popap').css('display', 'none');
-		$('.popap2').css('display', 'none');
+		$('.register__popap').css('display', 'none');
+	});
+
+	$('.item__act').on('click', function(e){
+		$(".action__popap", e.delegateTarget).toggleClass("active");
+		e.preventDefault();
+	});
+
+	$('.detail').on('click', function(){
+		alert('detail');
 	});
 
 });

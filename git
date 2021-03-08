@@ -1,0 +1,47 @@
+[33mcommit e6b67865cbd7230d09c08e4757e336927c3c94ec[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Ilya <nedenilya@gmail.com>
+Date:   Mon Mar 8 19:18:17 2021 +0300
+
+    try to add a register popap
+
+[33mcommit e9f230348fc53b57074e95a917a9555cb5d2f040[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Ilya <nedenilya@gmail.com>
+Date:   Sun Mar 7 14:04:30 2021 +0300
+
+    Login form added
+
+[33mcommit 57e4dcc2f145ae4e291f53dfaa0bd3cddbeb6b65[m
+Author: Ilya <nedenilya@gmail.com>
+Date:   Fri Mar 5 18:54:02 2021 +0300
+
+    Layout done v1
+
+[33mcommit 22c4db350c9c35d21ba050f3a510ee3ec0a563f3[m
+Author: Ilya <nedenilya@gmail.com>
+Date:   Fri Mar 5 18:37:55 2021 +0300
+
+    Layout done
+
+[33mcommit 2c74f206a3d97110b47c07d53a5e219e01eaa2e7[m
+Author: Ilya <nedenilya@gmail.com>
+Date:   Fri Mar 5 00:35:04 2021 +0300
+
+    Layout v1
+
+[33mcommit 1aba5aedcd3f48db94c97814cd6953c4eff55b8b[m
+Author: Ilya <nedenilya@gmail.com>
+Date:   Thu Mar 4 16:25:51 2021 +0300
+
+    check workable
+
+[33mcommit feb0871c582f6382abbc66aa8389afec9fa83937[m
+Author: Ilya <nedenilya@gmail.com>
+Date:   Thu Mar 4 16:23:36 2021 +0300
+
+    update_v1
+
+[33mcommit 4b7b060a3f37aab3e70c12500743cc0a67cca6e4[m
+Author: Ilya <nedenilya@gmail.com>
+Date:   Thu Mar 4 16:10:48 2021 +0300
+
+    Add initial set of files

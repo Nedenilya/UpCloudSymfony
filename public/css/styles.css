@@ -452,17 +452,6 @@ h1,h2,h3,h4,h5,h6{
 
 
 /* LOGIN POPAP STYLES */
-.popap2{
-	display: none;
-	align-items: center;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-color: rgba(137, 137, 137, 0.5);
-	z-index: 99999;
-}
 
 .login__popap{
 	display: none;
@@ -553,4 +542,6 @@ h1,h2,h3,h4,h5,h6{
 	width: 168px;
 	margin: 20px auto;
 }
+
+
 
