@@ -16,7 +16,9 @@ body{
 	margin: 0;
 	padding: 0;
 	background-color: #CDD6DD;
-	overflow: hidden;
+	overflow-x: hidden;
+	display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 header{
@@ -56,10 +58,6 @@ h1,h2,h3,h4,h5,h6{
 	width: 80px;
 	height: 45px;
 	margin-left: 27px;
-}
-
-.sign__buttons{
-	/*right: 20px;*/
 }
 
 .sign__button{
@@ -161,8 +159,9 @@ h1,h2,h3,h4,h5,h6{
 
 .container{
 	width: 100%;
-	display: flex;
-	align-items: center;
+	display: grid;
+	place-items: center;
+	/*align-items: center;*/
 }
 
 /* SIDEBAR STYLES */
@@ -201,7 +200,8 @@ h1,h2,h3,h4,h5,h6{
 .sidebar{
 	width: 300px;
 	transition: .6s;
-	background-color: #fff;
+	background: rgba(255, 255, 255, .5);
+	backdrop-filter: blur(5px);
 	align-items: center;
 
 }
@@ -267,12 +267,11 @@ h1,h2,h3,h4,h5,h6{
 /* TABLE STYLES */
 
 .uploads__table{
-	width: 850px;
+	width: 95vw;
 	height: 80vh;
+	display: flex;
 	background-color: white;
-	margin-left: 350px;
 	margin-top: 12px;
-	transition: .5s linear;
 	z-index: 5;
 }
 
@@ -323,14 +322,15 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .body__item{
-	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+	display: grid;
+    place-items: center;
 	position: relative;
 	padding: 10px 0 5px 25px;
 	font-size: 20px;
 	font-family: 'RobotoMono';
 	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+	display: flex;
 }
 
 .body__item div{

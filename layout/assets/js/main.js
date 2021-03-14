@@ -8,14 +8,10 @@ $(document).ready(function(){
 		if(left_sidebar_flag){
 			$('.left__sidebar__container').css('transform', 'translateX(0)');
 			$('.sidebar__arrow').css('transform', 'rotateY(180deg)');
-			$('.uploads__table').css('transform', 'translateX(0)');
-			$('.uploads__table').css('width', '850px');
 		}
 		else{
 			$('.left__sidebar__container').css('transform', 'translateX(-300px)');
 			$('.sidebar__arrow').css('transform', 'rotateY(0deg)');
-			$('.uploads__table').css('transform', 'translateX(-300px)');
-			$('.uploads__table').css('width', '1150px');
 		}
 		left_sidebar_flag = !left_sidebar_flag;
 	});
