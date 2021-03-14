@@ -17,8 +17,8 @@ body{
 	padding: 0;
 	background-color: #CDD6DD;
 	overflow-x: hidden;
-	display: grid;
-    grid-template-rows: auto 1fr auto;
+	/* display: grid; */
+    /* grid-template-rows: auto 1fr auto; */
 }
 
 header{
@@ -182,6 +182,7 @@ h1,h2,h3,h4,h5,h6{
 	background-color: #ABABAB;
 	opacity: .6;
 	width: 20px;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	transition: opacity .3s;
@@ -267,7 +268,7 @@ h1,h2,h3,h4,h5,h6{
 /* TABLE STYLES */
 
 .uploads__table{
-	width: 95vw;
+	width: 95%;
 	height: 80vh;
 	display: flex;
 	background-color: white;
@@ -284,7 +285,7 @@ h1,h2,h3,h4,h5,h6{
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	height: 7vh;
+	height: 50px;
 	padding: 10px 0 5px 20px;
 	font-size: 28px;
 	font-family: 'RobotoMono';
@@ -628,12 +629,46 @@ h1,h2,h3,h4,h5,h6{
 
 @media(max-width: 1440px){
 	.header{
+		width: 1200px;
+	}
+}
+
+@media(max-width: 1200px){
+	.header{
 		width: 1000px;
 	}
 }
 
 @media(max-width: 1000px){
 	.header{
-		width: 600px;
+		width: 800px;
+	}
+}
+
+@media(max-width: 720px){
+	.header{
+		width: 360px !important;
+	}
+
+	body{
+		width:360px !important;
+	}
+
+	.search__field{
+		width: 100px !important;
+	}
+
+	.logo__image{
+		width: 40px;
+		height: 25px;
+		margin-left: 10px;
+	}
+
+	.home__link{
+		font-size: 18px;
+	}
+
+	.nav__item{
+		font-size: 15px;
 	}
 }
