@@ -3,7 +3,6 @@ $(document).ready(function(){
 
 	let left_sidebar_flag = false;
 	let right_sidebar_flag = true;
-	let action_popap = false;
 
 
 // left sidebar dlide
@@ -51,15 +50,9 @@ $(document).ready(function(){
 		$('.register__popap').css('display', 'none');
 	});
 
-
 	$('.item__act').on('click', function(e){
 		$(".action__popap", e.delegateTarget).toggleClass("active");
 		e.preventDefault();
-		action_popap = !action_popap;
 	});
 
-
-	$('.detail').on('click', function(){
-		alert('detail');
-	});
 });
