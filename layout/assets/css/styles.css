@@ -116,7 +116,7 @@ h1,h2,h3,h4,h5,h6{
 
 .history__button{
 	width: 40px;
-	padding: 0 20px;
+	margin: 0 20px;
 }
 
 .history__button:hover{
@@ -367,7 +367,8 @@ h1,h2,h3,h4,h5,h6{
 	right:0;
 	top:125px;
 	bottom:0;
-	transform: translateX(300px);
+	display: none;
+	/* transform: translateX(300px); */
 	transition: .5s linear;
 	z-index: 10;
 }
@@ -647,11 +648,11 @@ h1,h2,h3,h4,h5,h6{
 
 @media(max-width: 720px){
 	.header{
-		width: 360px !important;
+		width: 424px !important;
 	}
 
 	body{
-		width:360px !important;
+		width:424px !important;
 	}
 
 	.search__field{
@@ -671,4 +672,11 @@ h1,h2,h3,h4,h5,h6{
 	.nav__item{
 		font-size: 15px;
 	}
+
+	.nav__path{
+		margin-left: 15px;
+	}
+
+	.history__button{
+		width: 30px;
 }
