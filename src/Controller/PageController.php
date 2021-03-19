@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     /**
-     * @Route("/page", name="page")
+     * @Route("/", name="main")
      */
     public function index(): Response
     {
-        return $this->render('page/index.html.twig', [
+        return $this->render('main/index.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }

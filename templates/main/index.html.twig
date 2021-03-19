@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+    <title>{% block title %}UpCloud{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">
+{% endblock %}
+</head>
+<body>
+{% block body %}
+
+    <header>
+    {% block header %}
+        <div class="header">
+            <div class="logo__block">
+                <img class="logo__image" src="{{ asset('images/cloud.svg') }}" alt="">
+                <h1 class="logo__text">
+                    <a class="home__link" href="/">UpCloud</a>
+                </h1>
+            </div>
+            <div class="sign__buttons">
+                <input class="sign__button" id="signin" type="button" value="sign in">
+                <input class="sign__button" id="signup" type="button" value="sign up">
+            </div>
+        </div>
+        <div class="underhead__bar__container">
+            <div class="underhead__bar">
+                <div class="nav__path">
+                    <h2 class="nav__item">
+                        Main
+                    </h2>
+                </div>
+                <div class="rightside__block">
+                    <div class="search__container">
+                        <div class="search__block">
+                            <img class="search__glass" src="{{ asset('images/search-glass.svg')}}">
+                            <input class="search__field" type="search">
+                        </div>
+                    </div>
+                    <img class="history__button" src="{{ asset('images/book.svg') }}">
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    </header>
+
+    {% block main %}
+    <div class="container">
+        <div class="uploads__table">
+            <div class="table">
+                <div class="table__head">
+                    <div class="title head__item">Title</div>
+                    <div class="extension head__item">Extension</div>
+                    <div class="updated head__item">Updated</div>
+                    <div class="size head__item">Size</div>
+                </div>
+                <div class="table__body">
+                    {% block table_items %}
+                        <div class="body__item">
+                            <a class="item__detail" href="item.html"></a>
+                            <img class="item__icon" src="{{ asset('images/icons/txt.svg')}}">
+                            <div class="item__title">Item number 1 Item num...</div>
+                            <div class="item__extension">php</div>
+                            <div class="item__updated">23.05.2021</div>
+                            <div class="item__size">145kb</div>
+                            <div class="item__act">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="action__popap">
+                                    <ul class="actions__list">
+                                        <li class="act__item detail">Detail</li>
+                                        <li class="act__item delete">Delete</li>
+                                        <li class="act__item download">Download</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="body__item">
+                            <a class="item__detail" href="item.html"></a>
+                            <img class="item__icon" src="{{ asset('images/icons/jpg.svg')}}">
+                            <div class="item__title">Item number 2</div>
+                            <div class="item__extension">html</div>
+                            <div class="item__updated">02.09.2021</div>
+                            <div class="item__size">14kb</div>
+                            <div class="item__act">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="action__popap">
+                                    <ul class="actions__list">
+                                        <li class="act__item detail">Detail</li>
+                                        <li class="act__item delete">Delete</li>
+                                        <li class="act__item download">Download</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body__item">
+                        <a class="item__detail" href="item.html"></a>
+                        <img class="item__icon" src="{{ asset('images/icons/xls.svg')}}">
+                        <div class="item__title">Item number 3</div>
+                        <div class="item__extension">css</div>
+                        <div class="item__updated">18.02.2021</div>
+                        <div class="item__size">67kb</div>
+                        <div class="item__act">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <div class="action__popap">
+                                <ul class="actions__list">
+                                    <li class="act__item detail">Detail</li>
+                                    <li class="act__item delete">Delete</li>
+                                    <li class="act__item download">Download</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block left_sidebar %}
+        <div class="left__sidebar__container">
+            <div class="sidebar">
+                <div class="sidebar__menu">
+                    <div class="sidebar__item upload__file">
+                        <p><a class="link" href="upload_files.html">Upload</a></p>
+                    </div>
+                    <div class="sidebar__item">
+                        <p><a class="link" href="">My UpCloud</a></p>
+                    </div>
+                    <div class="sidebar__item">
+                        <p><a class="link" href="">Viewed</a></p>
+                    </div>
+                    <div class="sidebar__item">
+                        <p><a class="link" href="">For developers</a></p>
+                    </div>
+                </div>
+                <div class="storage__stat__block">
+                    <div class="storage__stat__scale">
+                        <div class="storage__stat__left"></div>
+                    </div>
+                    <div class="storage__stat__text">
+                        Used 150 mb of 1 gb
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar__button">
+                <img class="sidebar__arrow" src="{{ asset('images/sidebar-arrow.svg')}}">
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block right_sidebar %}
+        <div class="right__sidebar__container">
+            <div class="sidebar">
+                <div class="sidebar__title">
+                    History
+                </div>
+                <div class="sidebar__items">
+                    <div class="right__sidebar__item">
+                        <div class="item__content">
+                            <div class="histiry__date">
+                                <div>12.02.2021</div>
+                                <div class="action">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="history__action">
+                                Record added into the UpCloud.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right__sidebar__item">
+                        <div class="item__content">
+                            <div class="histiry__date">
+                                <div>12.02.2021</div>
+                                <div class="action">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="history__action">
+                                Record added into the UpCloud.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block popaps %}
+        {% block register_popap %}
+        <div class="register__popap">
+            <div class="register__container">
+                <span class="close__button">
+                    <img class="cross__image" src="{{ asset('images/cross.svg')}}">
+                </span>
+
+                <form class="register__form">
+                    <div class="form__container">
+                        <div class="form__inputs">
+                            <div class="input__block">
+                                <label for="name">Name</label>
+                                <input class="name input" type="text" name="name" placeholder="Name">
+                            </div>
+                            <div class="input__block">
+                                <label for="mail">E-mail</label>
+                                <input class="mail input" type="mail" name="mail" placeholder="example@gmail.com">
+                            </div>
+                            <div class="input__block">
+                                <label for="pass">Psasword</label>
+                                <input class="pass input" type="password" name="pass" placeholder="Password">
+                            </div>
+                            <div class="input__block">
+                                <label for="pass">Psasword again</label>
+                                <input class="pass input" type="password" name="pass" placeholder="Password again">
+                            </div>
+                        </div>
+                        <div class="form__submit">
+                            <input class="form__submit__btn" type="submit" value="Sign up">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block login_popap %}
+        <div class="login__popap">
+            <div class="login__container">
+                <span class="close__button">
+                    <img class="cross__image" src="{{ asset('images/cross.svg') }}">
+                </span>
+
+                <form class="login__form">
+                    <div class="form__container">
+                        <div class="form__inputs">
+                            <div class="input__block">
+                                <label for="mail">E-mail</label>
+                                <input class="mail input" type="mail" name="mail" placeholder="example@gmail.com">
+                            </div>
+                            <div class="input__block">
+                                <label for="pass">Psasword</label>
+                                <input class="pass input" type="password" name="pass" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="form__submit">
+                            <input class="form__submit__btn" type="submit" value="Sign in">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+    {% endblock %}
+{% endblock %}
+</body>
+{% block javascripts %}
+    <script src="{{ asset('jquery.min.js') }}"></script>
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</html>
