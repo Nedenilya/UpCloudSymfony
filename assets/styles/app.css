@@ -409,11 +409,11 @@ h1,h2,h3,h4,h5,h6{
     scroll-behavior: smooth;
 }
 
-.sidebar__items::-webkit-scrollbar{
+.sidebar__items::scrollbar{
     width: 10px;
 }
 
-.sidebar__items::-webkit-scrollbar-thumb{
+.sidebar__items::scrollbar-thumb{
     background-color: #00635D;
     border-radius: 5px;
     width: 5px;

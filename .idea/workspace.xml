@@ -20,38 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="485487c8-0a3a-407d-903f-a4154c8325df" name="Default Changelist" comment="added page controller">
-      <change afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/upcloud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/upcloud.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/fonts/OpenSans.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fonts/OpenSans.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/fonts/Roboto.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fonts/Roboto.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/fonts/RobotoMono.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fonts/RobotoMono.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/fonts/RobotoSlab.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fonts/RobotoSlab.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/book.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/cloud.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/cross.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/icons/doc.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/icons/jpg.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/icons/pdf.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/icons/txt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/icons/xls.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/icons/zip.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/search-glass.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/images/sidebar-arrow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/layout/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/upload_files.html" beforeDir="false" afterPath="$PROJECT_DIR$/layout/upload_files.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/page/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +174,7 @@
       <option name="presentableId" value="Default" />
       <updated>1616160367507</updated>
       <workItem from="1616160369278" duration="969000" />
-      <workItem from="1616178032603" duration="7918000" />
+      <workItem from="1616178032603" duration="13664000" />
     </task>
     <servers />
   </component>

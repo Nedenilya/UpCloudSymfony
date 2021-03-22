@@ -17,4 +17,14 @@ class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
+
+    /**
+     * @Route("/upload", name="upload")
+     */
+    public function upload(): Response
+    {
+        return $this->render('upload/upload_files.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
+    }
 }
