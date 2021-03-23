@@ -13,17 +13,7 @@ class PageController extends AbstractController
      * @Route("/", name="main")
      */
     public function index(): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $user = new User();
-        $user->setUsername('Ilya')
-             ->setEmail('nedenilya@gmail.com')
-             ->setPassword('Ilya123')
-             ->setRoles(array('ROLE_USER'));
-
-        $entityManager->persist($user);
-        $entityManager->flush();
+    {       
         
         return $this->render('main/index.html.twig', [
             'controller_name' => 'PageController',

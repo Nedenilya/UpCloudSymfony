@@ -71,6 +71,8 @@ h1,h2,h3,h4,h5,h6{
     height: 40px;
     background: #003D39;
     border-radius: 10px;
+    padding: 3px 10px;
+    text-decoration: none;
     border: none;
     color: white;
     font-size: 24px;
@@ -515,6 +517,7 @@ h1,h2,h3,h4,h5,h6{
     height: 400px;
     margin: 0 auto;
     margin-top: 10%;
+    border-radius: 10px;
     background: #CDD6DD;
 }
 
@@ -535,6 +538,7 @@ h1,h2,h3,h4,h5,h6{
     height: 450px;
     margin: 0 auto;
     margin-top: 10%;
+    border-radius: 10px;
     background: #CDD6DD;
 }
 
@@ -543,9 +547,10 @@ h1,h2,h3,h4,h5,h6{
     align-items: center;
     width: 26px;
     height: 26px;
+    margin: 5px;
     border-radius: 50%;
     float: right;
-    transform: translate(13px, -13px);
+    /*transform: translate(13px, -13px);*/
 }
 
 .close__button:hover{
@@ -598,6 +603,10 @@ h1,h2,h3,h4,h5,h6{
     font-family: RobotoMono;
     padding-bottom: 12px;
     font-size: 14px;
+}
+
+.input__block > label{
+    margin-left: 5px;
 }
 
 .form__submit__btn{

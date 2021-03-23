@@ -33,15 +33,15 @@ $(document).ready(function(){
 
 
 // popap login frame
-	$('#signin').on('click', function(){
-		$('.login__popap').css('display', 'block');
-	});
+// 	$('#signin').on('click', function(){
+// 		$('.login__popap').css('display', 'block');
+// 	});
 
 
 // popap register frame
-	$('#signup').on('click', function(){
-		$('.register__popap').css('display', 'block');
-	});
+// 	$('#signup').on('click', function(){
+// 		$('.register__popap').css('display', 'block');
+// 	});
 
 
 // close frame button

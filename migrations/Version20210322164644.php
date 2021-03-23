@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DoctrineMigrations;
 
+use App\Entity\User;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
@@ -21,6 +22,16 @@ final class Version20210322164644 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE user CHANGE roles roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\'');
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $user = new User();
+        $user->setUsername('Ilya')
+             ->setEmail('nedenilya@gmail.com')
+             ->setPassword('Ilya123')
+             ->setRoles(array('ROLE_USER'));
+
+        $entityManager->persist($user);
+        $entityManager->flush();
     }
 
     public function down(Schema $schema) : void

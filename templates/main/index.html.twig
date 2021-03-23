@@ -22,8 +22,12 @@
                 </h1>
             </div>
             <div class="sign__buttons">
-                <input class="sign__button" id="signin" type="button" value="sign in">
-                <input class="sign__button" id="signup" type="button" value="sign up">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            	<a href="{{ path('app_logout') }}" class="sign__button" id="signin">logout</a>
+            {% else %}
+                <a href="{{ path('app_register') }}" class="sign__button" id="signup">sign up</a>
+                <a href="{{ path('app_login') }}" class="sign__button" id="signin">sign in</a>
+            {% endif %}
             </div>
         </div>
         <div class="underhead__bar__container">
