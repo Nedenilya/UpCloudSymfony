@@ -4,7 +4,22 @@ $(document).ready(function(){
 	let left_sidebar_flag = false;
 	let right_sidebar_flag = true;
 
+	if(!$('.registration_form_username').val()) 
+    	$('.registration_form_username').attr("placeholder", "Username");
 
+    if(!$('.registration_form_email').val()) 
+     	$('.registration_form_email').attr("placeholder", "E-mail");
+
+    if(!$('.registration_form_plainPassword').val()) 
+     	$('.registration_form_plainPassword').attr("placeholder", "Password");
+
+    $('.form__submit__btn').on('click', function(e){
+	    if($('#password_check').val().trim() === $('.registration_form_plainPassword').val().trim() ){
+			alert('match done');
+		} else{
+			alert('match error');
+		}
+	});
 // left sidebar dlide
 	$('.sidebar__button').on('click', function(){
 		if(left_sidebar_flag){

@@ -37,14 +37,21 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
+            if($form->get('password')->getData() === $form->get('passwordAgain')->getData()){
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('password')->getData()
+                    )
+                );
+            }else{
+                return $this->render('registration/register.html.twig', [
+                    'registrationForm' => $form->createView(),
+                ]);
+            }
 
-            $user->setUsername($form->get('email')->getData());
+            $user->setUsername($form->get('username')->getData());
+            $user->setEmail($form->get('email')->getData());
             $user->setRoles(array('ROLE_USER'));
 
             $entityManager = $this->getDoctrine()->getManager();

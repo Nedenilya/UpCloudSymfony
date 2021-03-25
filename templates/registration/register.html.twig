@@ -1,23 +1,85 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Register{% endblock %}
-{% block styles %}
-    <link rel="stylesheet" type="text/css" href="build/app.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+    <title>{% block title %}UpCloud{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ encore_entry_link_tags('app') }}
 {% endblock %}
+</head>
+<body>
 {% block body %}
+
+    <header>
+    {% block header %}
+        <div class="header">
+            <div class="logo__block">
+                <img class="logo__image" src="{{ asset('images/cloud.svg') }}" alt="">
+                <h1 class="logo__text">
+                    <a class="home__link" href="/">UpCloud</a>
+                </h1>
+            </div>
+            <div class="sign__buttons">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{ path('app_logout') }}" class="sign__button" id="signin">logout</a>
+            {% else %}
+                <a href="{{ path('app_register') }}" class="sign__button" id="signup">sign up</a>
+                <a href="{{ path('app_login') }}" class="sign__button" id="signin">sign in</a>
+            {% endif %}
+            </div>
+        </div>
+        <div class="underhead__bar__container">
+            <div class="underhead__bar">
+                <div class="nav__path">
+                    <h2 class="nav__item">
+                        Registration
+                    </h2>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    </header>
+
+<div class="register__container">
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
-
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
+        <div class="form__container">
+            <div class="form__inputs">
+                    {{ form_row(registrationForm.username, { 'attr': {
+                        'placeholder': 'Username'} } )}}
+                    {{ form_row(registrationForm.email, { 'attr': {
+                        'placeholder': 'E-mail'} }) }}
+                    {{ form_row(registrationForm.password,
+                        { 'attr': {
+                            'placeholder': 'Password'
+                        } }) 
+                    }}
+                    {{ form_row(registrationForm.passwordAgain,
+                        { 'attr': {
+                            'placeholder': 'E-mail'
+                        } }) 
+                    }}
+                {# <div class="form-group">
+                    <label for="pass">Psasword again</label>
+                    <input id="password_check" class="pass input" type="password" name="pass_check" placeholder="Password again">
+                </div> #}
+                <div class="input__block">
+                    {{ form_row(registrationForm.agreeTerms) }}
+                </div>
+            </div>
+            <div class="form__submit">
+                <button type="submit" class="form__submit__btn btn">Sign up</button>
+            </div>
+        </div>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}
+</body>
+</html>
+    
+    

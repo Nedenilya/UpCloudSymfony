@@ -51,8 +51,8 @@
     {% endblock %}
     </header>
 
+	<div class="container">
     {% block main %}
-    <div class="container">
         <div class="uploads__table">
             <div class="table">
                 <div class="table__head">
@@ -440,8 +440,8 @@
                 </div>
             </div>
         </div>
-    </div>
     {% endblock %}
+    </div>
 
     {% block left_sidebar %}
         <div class="left__sidebar__container">
@@ -516,74 +516,9 @@
             </div>
         </div>
     {% endblock %}
-
-    {% block popaps %}
-        {% block register_popap %}
-        <div class="register__popap">
-            <div class="register__container">
-                <span class="close__button">
-                    <img class="cross__image" src="{{ asset('images/cross.svg')}}">
-                </span>
-
-                <form class="register__form">
-                    <div class="form__container">
-                        <div class="form__inputs">
-                            <div class="input__block">
-                                <label for="name">Name</label>
-                                <input class="name input" type="text" name="name" placeholder="Name">
-                            </div>
-                            <div class="input__block">
-                                <label for="mail">E-mail</label>
-                                <input class="mail input" type="mail" name="mail" placeholder="example@gmail.com">
-                            </div>
-                            <div class="input__block">
-                                <label for="pass">Psasword</label>
-                                <input class="pass input" type="password" name="pass" placeholder="Password">
-                            </div>
-                            <div class="input__block">
-                                <label for="pass">Psasword again</label>
-                                <input class="pass input" type="password" name="pass" placeholder="Password again">
-                            </div>
-                        </div>
-                        <div class="form__submit">
-                            <input class="form__submit__btn" type="submit" value="Sign up">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    {% endblock %}
-
-    {% block login_popap %}
-        <div class="login__popap">
-            <div class="login__container">
-                <span class="close__button">
-                    <img class="cross__image" src="{{ asset('images/cross.svg') }}">
-                </span>
-
-                <form class="login__form">
-                    <div class="form__container">
-                        <div class="form__inputs">
-                            <div class="input__block">
-                                <label for="mail">E-mail</label>
-                                <input class="mail input" type="mail" name="mail" placeholder="example@gmail.com">
-                            </div>
-                            <div class="input__block">
-                                <label for="pass">Psasword</label>
-                                <input class="pass input" type="password" name="pass" placeholder="password">
-                            </div>
-                        </div>
-                        <div class="form__submit">
-                            <input class="form__submit__btn" type="submit" value="Sign in">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    {% endblock %}
-    {% endblock %}
 {% endblock %}
 </body>
+
 {% block javascripts %}
     <script src="{{ asset('jquery.min.js') }}"></script>
     {{ encore_entry_script_tags('app') }}

@@ -1,0 +1,10 @@
+{
+  "css/app.css": "/css/app.css",
+  "css/app.js": "/css/app.js",
+  "css/runtime.js": "/css/runtime.js",
+  "css/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-7db861.js": "/css/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-7db861.js",
+  "css/fonts/RobotoSlab.ttf": "/css/fonts/RobotoSlab.27a558ea.ttf",
+  "css/fonts/RobotoMono.ttf": "/css/fonts/RobotoMono.2ccde177.ttf",
+  "css/fonts/Roboto.ttf": "/css/fonts/Roboto.03523cf5.ttf",
+  "css/fonts/OpenSans.ttf": "/css/fonts/OpenSans.1b0809d5.ttf"
+}

@@ -53,7 +53,7 @@ class User implements UserInterface
 
     public function setUsername(string $name): self
     {
-        $this->name = explode('@', $name)[0];
+        $this->name = $name;
 
         return $this;
     }
