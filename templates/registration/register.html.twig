@@ -54,14 +54,20 @@
                         'placeholder': 'Username'} } )}}
                     {{ form_row(registrationForm.email, { 'attr': {
                         'placeholder': 'E-mail'} }) }}
+                    {# {% for flashError in app.flashes('message') %}
+                        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                    {% endfor %} #}
                     {{ form_row(registrationForm.password,
                         { 'attr': {
                             'placeholder': 'Password'
                         } }) 
                     }}
+                    {% for flashError in app.flashes('message') %}
+                        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                    {% endfor %}
                     {{ form_row(registrationForm.passwordAgain,
                         { 'attr': {
-                            'placeholder': 'E-mail'
+                            'placeholder': 'Password again'
                         } }) 
                     }}
                 {# <div class="form-group">

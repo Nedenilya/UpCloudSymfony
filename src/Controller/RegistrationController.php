@@ -45,6 +45,7 @@ class RegistrationController extends AbstractController
                     )
                 );
             }else{
+                $this->addFlash('message', 'Passwords must be same');
                 return $this->render('registration/register.html.twig', [
                     'registrationForm' => $form->createView(),
                 ]);
