@@ -92,7 +92,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .underhead__bar{
-    width:px;
+    width: 1440px;
     height: 45px;
     margin: 0 auto;
     align-items: center;
@@ -365,9 +365,10 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .item__icon{
-    display: none;
-    width: 0;
-    height: 0;
+    /*display: none;*/
+    padding: 0 10px;
+    width: 41px;
+    height: 41px;
 }
 
 .item__title{
@@ -409,11 +410,11 @@ h1,h2,h3,h4,h5,h6{
     scroll-behavior: smooth;
 }
 
-.sidebar__items::scrollbar{
+.sidebar__items::-webkit-scrollbar{
     width: 10px;
 }
 
-.sidebar__items::scrollbar-thumb{
+.sidebar__items::-webkit-scrollbar-thumb{
     background-color: #00635D;
     border-radius: 5px;
     width: 5px;
@@ -674,6 +675,11 @@ h1,h2,h3,h4,h5,h6{
     color: black;
 }
 
+.act__item > a{
+    color: black;
+    text-decoration: none;
+}
+
 .act__item:hover{
     background-color: lightgray;
 }
@@ -744,7 +750,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
-.input-file{
+.custom-file-input{
     -webkit-box-direction: normal;
     margin: 0;
     padding: 0;
@@ -762,8 +768,10 @@ h1,h2,h3,h4,h5,h6{
     border: 0;
     outline: 0;
 }
-
-.file_label{
+.custom-file-label:after{
+    content: "Type files";
+}
+.custom-file-label{
     font-family: 'Rubik', sans-serif;
     -webkit-box-direction: normal;
     box-sizing: border-box;
@@ -778,13 +786,19 @@ h1,h2,h3,h4,h5,h6{
     border: 2px solid #00635D;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
-    width: auto;
+    width: 120px;
+    height: 40px;
     max-width: 350px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 0 10px;
     cursor: pointer;
+}
+
+.required{
+    display: flex;
+    flex: 1;
 }
 
 .fileName{
@@ -826,6 +840,13 @@ h1,h2,h3,h4,h5,h6{
 
 .alert-danger{
     color: red;
+    font-size: 12px;
+    font-family: Roboto;
+    padding: 3px 5px;
+}
+
+.alert-success{
+    color: green;
     font-size: 12px;
     font-family: Roboto;
     padding: 3px 5px;

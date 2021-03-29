@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     {% block head %}
         <title>{% block title %}UpCloud{% endblock %}</title>
@@ -51,10 +51,10 @@
         <div class="sidebar">
             <div class="sidebar__menu">
                 <div class="sidebar__item upload__file">
-                    <p><a class="link" href="/upload">Upload</a></p>
+                    <p><a class="link" href="/upload_files">Upload</a></p>
                 </div>
                 <div class="sidebar__item">
-                    <p>My UpCloud</p>
+                    <p><a href="/uploads">My UpCloud</a></p>
                 </div>
                 <div class="sidebar__item">
                     <p>Viewed</p>
@@ -78,19 +78,20 @@
         {% endblock %}
     </div>
 
-    <form action="/" method="POST">
+    {{ form_start(uploadForm) }}
         <div class="upload_container">
             {% block upload %}
             <div class="info-block__input-block">
-                <p id="to_hide" class="input-block__text">Перетащите файлы сюда или</p>
+                <p id="to_hide" class="input-block__text">Drop files here or</p>
 
                 <div class="upload__files">
-                    <div class="form-group">
-                        <input type="file" name="profile_image" size="200" id="file" class="input-file">
-                        <label for="file" class="file_label">
-                            <span class="fileName">Выберите файлы</span>
-                        </label>
-                    </div>
+                    {{ form_widget(uploadForm) }}
+                    {% for flash in app.flashes('success_upload') %}
+                        <div class="alert alert-success" role="alert">{{ flash }}</div>
+                    {% endfor %}
+                    {% for flasherr in app.flashes('upload_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flasherr }}</div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="upload_button_container">
@@ -98,16 +99,11 @@
             </div>
             {% endblock %}
         </div>
-    </form>
-    <!-- /UPLOAD -->
+        {{ form_end(uploadForm) }}
 {% endblock %}
 </div>
 
 {% endblock %}
-
-{{ form_start(fileForm) }}
-{{ form_end(fileForm) }}
-
 </body>
 
 <script src="{{ asset('jquery.min.js') }}"></script>

@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\UploadsRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UploadsRepository::class)
@@ -21,21 +23,11 @@ class Uploads
     {
         return $this->id;
     }
-
     /**
-     * @ORM\Column(type="string", length=60, unique=false)
-     */
-    private $title; 
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @ORM\Column(type="string", length=60, unique=false)
+     * @ORM\Column(type="string", length=150, unique=false)
+     *
+     * @Assert\File(
+     *     maxSize = "1024M")
      */
     private $fileName; 
 
@@ -49,11 +41,6 @@ class Uploads
     public function getFileName(): string
     {
         return $this->fileName;
-    }
-    
-    public function getTitle(): string
-    {
-        return $this->title;
     }
 
     /**
@@ -93,9 +80,9 @@ class Uploads
     /**
      * @ORM\Column(type="string", length=35, unique=false)
      */
-    private DateTimeInterface $uploaded;
+    private string $uploaded;
 
-    public function setUploaded(DateTimeInterface $uploaded): self
+    public function setUploaded(string $uploaded): self
     {
         $this->uploaded = $uploaded;
 

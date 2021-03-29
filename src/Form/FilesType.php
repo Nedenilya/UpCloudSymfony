@@ -14,8 +14,7 @@ class FilesType extends AbstractType
     {
         $builder
             ->add('fileName', 
-                FileType::class,
-                array('label' => 'Brochure (PDF file)')
+                FileType::class
             );
     }
 
@@ -23,6 +22,13 @@ class FilesType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Uploads::class,
+            // включить/выключить защиту от CSRF для этой формы
+            'csrf_protection' => true,
+            // имя скрытого HTML поля, хранящего токен
+            'csrf_field_name' => '_token',
+            // произвольная строка, использовання для генерирования значения токена,
+            // использование другой строки для каждой формы усиливает её безопасность
+            'csrf_token_id'   => 'upload_csrf',
         ]);
     }
 }

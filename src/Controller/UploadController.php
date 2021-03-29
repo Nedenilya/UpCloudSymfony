@@ -4,7 +4,9 @@ namespace App\Controller;
 
 
 use App\Entity\Uploads;
-use App\Form\FileType;
+use App\Form\FilesType;
+use DateTime;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -15,56 +17,97 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UploadController extends AbstractController
 {
-    
-    public function index2(): Response
-    {
-        
-    }
 
     /**
-     * @Route("/upload", name="upload")
+     * @Route("/upload_files", name="app_upload_files")
      */
-    public function index(Request $request)
+    public function upload_files(Request $request, SluggerInterface $slugger) : Response
     {
         $upload = new Uploads();
-        $form = $this->createForm(FileType::class, $upload);
+        $form = $this->createForm(FilesType::class, $upload);
+
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            // if($form->get('password')->getData() === $form->get('passwordAgain')->getData()){
-            //     $user->setPassword(
-            //         $passwordEncoder->encodePassword(
-            //             $user,
-            //             $form->get('password')->getData()
-            //         )
-            //     );
-            // }else{
-            //     $this->addFlash('message', 'Passwords must be same');
-            //     return $this->render('registration/register.html.twig', [
-            //         'registrationForm' => $form->createView(),
-            //     ]);
-            // }
 
-            // $user->setUsername($form->get('username')->getData());
-            // $user->setEmail($form->get('email')->getData());
-            // $user->setRoles(array('ROLE_USER'));
+            $file = $form['fileName']->getData();
 
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($user);
-            // $entityManager->flush();
+            $upload->setFileName(explode('.',$file->getClientOriginalName())[0]);
+            $upload->setUploaded(date("d.m.Y").'');
 
-           
-            // return $guardHandler->authenticateUserAndHandleSuccess(
-            //     $user,
-            //     $request,
-            //     $authenticator,
-            //     'main' // firewall name in security.yaml
-            // );
+            $extension = explode('.',$file->getClientOriginalName())[1];
+            if ($extension) {
+                $upload->setExtension($extension);
+            }else{
+                $extension = '';
+            }
+
+            $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename.'.'.$extension;
+
+            try {
+                $file->move(
+                    $this->getParameter('uploads_directory'),
+                    $newFilename
+                );
+            } catch (FileException $e) {
+                $this->addFlash('upload_error', 'Files not uploaded');
+            }
+
+            $upload->setSize(round(filesize(
+                $this->getParameter('uploads_directory').'/'.$newFilename) / 1024, 0).'');
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($upload);
+            $entityManager->flush();
+
+            $this->addFlash('success_upload', 'Files uploaded');
         }
 
         return $this->render('upload/upload_files.html.twig', [
-            'fileForm' => $form->createView(),
+            'uploadForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/uploads", name="uploads_show")
+     */
+    public function show()
+    {
+        $uploads = $this->getDoctrine()
+            ->getRepository(Uploads::class)
+            ->findAll();
+            
+        $uploadsSize = $this->getDoctrine()
+            ->getRepository(Uploads::class)
+            ->findAllSize();
+        
+        if($uploadsSize > 10000)
+            $uploadsSize = round($uploadsSize/1024, 1).' Mb';
+        elseif($uploadsSize > 1000000)
+            $uploadsSize = round($uploadsSize/1024/1024, 1).' Gb';
+        else
+            $uploadsSize = '0 Gb';
+
+        $scale = round(explode(' ', $uploadsSize)[0]/10, 0);
+
+        if (!$uploads) {
+            throw $this->createNotFoundException(
+                'No product found for id'
+            );
+        }
+
+        //return new Response('Check out this great product: '.$product->getName());
+
+        // or render a template
+        // in the template, print things with {{ product.name }}
+        return $this->render('upload/uploads.html.twig', [
+            'items' => $uploads,
+            'available_space' => $uploadsSize,
+            'all_space' => '1 Gb',
+            'scale' => $scale
+        ]);
+    }
+
+
 }

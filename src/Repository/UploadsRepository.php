@@ -19,6 +19,21 @@ class UploadsRepository extends ServiceEntityRepository
         parent::__construct($registry, Uploads::class);
     }
 
+    /**
+     * @return integer
+     */
+    public function findAllSize()
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT SUM(e.size)
+            FROM App\Entity\Uploads e'
+        );
+
+        return $query->getResult()[0][1];
+    }
+
     // /**
     //  * @return Uploads[] Returns an array of Uploads objects
     //  */
