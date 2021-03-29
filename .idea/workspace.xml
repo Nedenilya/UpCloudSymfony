@@ -20,9 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="485487c8-0a3a-407d-903f-a4154c8325df" name="Default Changelist" comment="added page controller">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UploadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Uploads.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Uploads.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload/upload_files.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload/upload_files.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +178,7 @@
       <updated>1616160367507</updated>
       <workItem from="1616160369278" duration="969000" />
       <workItem from="1616178032603" duration="13664000" />
+      <workItem from="1616949956455" duration="252000" />
     </task>
     <servers />
   </component>

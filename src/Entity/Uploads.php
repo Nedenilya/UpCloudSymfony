@@ -34,6 +34,23 @@ class Uploads
         return $this;
     }
 
+    /**
+     * @ORM\Column(type="string", length=60, unique=false)
+     */
+    private $fileName; 
+
+    public function setFileName(string $name): self
+    {
+        $this->fileName = $name;
+
+        return $this;
+    }
+
+    public function getFileName(): string
+    {
+        return $this->fileName;
+    }
+    
     public function getTitle(): string
     {
         return $this->title;
