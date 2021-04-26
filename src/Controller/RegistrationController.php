@@ -54,6 +54,8 @@ class RegistrationController extends AbstractController
             $user->setUsername($form->get('username')->getData());
             $user->setEmail($form->get('email')->getData());
             $user->setRoles(array('ROLE_USER'));
+            $user->setRegDate(date("d.m.Y").'');
+            $user->getProfileImage($this->getParameter('default_profile_image'));
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

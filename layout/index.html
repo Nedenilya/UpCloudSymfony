@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 <body>
 <!-- HEADER -->
@@ -47,7 +47,7 @@
 <!-- PAGE CONTENT -->
 	<div class="container">
 		<!-- LEFT SIDEBAR -->
-		<div class="left__sidebar__container">
+		<!-- <div class="left__sidebar__container">
 			<div class="sidebar">
 				<div class="sidebar__menu">
 					<div class="sidebar__item upload__file">
@@ -76,9 +76,6 @@
 				<img class="sidebar__arrow" src="{{ asset('images/sidebar-arrow.svg')}}">
 			</div>		
 		</div>
-		<!-- /LEFT SIDEBAR -->
-
-		<!-- RIGHT SIDEBAR -->
 		<div class="right__sidebar__container">
 			<div class="sidebar">
 				<div class="sidebar__title">
@@ -118,11 +115,54 @@
 					</div>
 				</div>
 			</div>
-		</div> 
+		</div>  -->
 		<!-- /RIGHT SIDEBAR -->
+		<div class="account-info_container">
+                <div class="account_info">
+                    <div class="photo_block">
+                        <div class="photo">
+                            <img src="pdf.svg">
+                        </div>
+                        <input type="file" id="fileid">
+						<label for="fileid">Загрузить фотографию</label>
+                        <!-- <input type="file" name="photo" class="load-photo"> -->
+                    </div>
+                    <div class="info_container">
 
+                    	<div class="info_block">
+                            <div class="info-item_block">
+                                <div class="info-item">
+                                    <p>Name: </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info_block">
+                            <div class="info-item_block">
+                                <div class="info-item">
+                                    <p>E-mail: </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info_block">
+                            <div class="info-item_block">
+                                <div class="info-item">
+                                    <p>Register date: </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info_block">
+                            <div class="info-item_block">
+                                <div class="info-item">
+                                    <p>Count of uploads: </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 		<!-- TABLE -->
-		<div class="uploads__table">
+		<!-- <div class="uploads__table">
 			<div class="table">
 				<div class="table__head">
 					<div class="title head__item">Title</div>
@@ -193,7 +233,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- /TABLE -->
 
 	</div>

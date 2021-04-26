@@ -31,6 +31,16 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=80, unique=false)
+     */
+    private $regdate;
+
+    /**
+     * @ORM\Column(type="string", length=200, unique=false)
+     */
+    private $profileimage;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -54,6 +64,30 @@ class User implements UserInterface
     public function setUsername(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getProfileImage(): ?string
+    {
+        return $this->profileimage;
+    }
+
+    public function setProfileImage(string $profileimage): self
+    {
+        $this->profileimage = $profileimage;
+
+        return $this;
+    }
+
+    public function getRegDate(): ?string
+    {
+        return $this->regdate;
+    }
+
+    public function setRegDate(string $regdate): self
+    {
+        $this->regdate = $regdate;
 
         return $this;
     }

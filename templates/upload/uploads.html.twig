@@ -34,15 +34,17 @@
             <div class="underhead__bar">
                 <div class="nav__path">
                     <h2 class="nav__item">
-                        Main
+                        Main {{ filename }}
                     </h2>
                 </div>
                 <div class="rightside__block">
                     <div class="search__container">
-                        <div class="search__block">
-                            <img class="search__glass" src="{{ asset('images/search-glass.svg')}}">
-                            <input class="search__field" type="search">
-                        </div>
+                        <form class="search__form" method="POST" action="/uploads">    
+                            <div class="search__block">
+                                <img class="search__glass" src="{{ asset('images/search-glass.svg')}}">
+                                <input class="search__field" name="title" type="text">
+                            </div>
+                        </form>
                     </div>
                     <img class="history__button" src="{{ asset('images/book.svg') }}">
                 </div>
@@ -65,25 +67,37 @@
                     {% block table_items %}
                     	{% for item in items %}
                     		<div class="body__item">
-	                            <a class="item__detail" href="item.html"></a>
-	                            <img class="item__icon" src="images/icons/{{ item.extension }}.svg">
-	                            <div class="item__title">{{ item.fileName }}</div>
-	                            <div class="item__extension">{{ item.extension }}</div>
-	                            <div class="item__updated">{{ item.uploaded }}</div>
-	                            <div class="item__size">{{ item.size }}b</div>
-	                            <div class="item__act">
-	                                <span></span>
-	                                <span></span>
-	                                <span></span>
-	                                <div class="action__popap">
-	                                    <ul class="actions__list">
-	                                        <li class="act__item detail"><a href="detail/{{ item.id }}">Detail</a></li>
-	                                        <li class="act__item delete"><a href="delete/{{ item.id }}">Delete</a></li>
-	                                        <li class="act__item download"><a href="download/{{ item.id }}">Download</a></li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-	                        </div>
+                                <a class="item__detail" href="item.html"></a>
+                                <img class="item__icon" src="/images/icons/{{ item.extension }}.svg">
+                                <div class="item__title">{{ item.fileName }}</div>
+                                <div class="item__extension">{{ item.extension }}</div>
+                                <div class="item__updated">{{ item.uploaded }}</div>
+                                <div class="item__size">{{ item.size }}b</div>
+                                <div class="item__act">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <div class="action__popap">
+                                        <ul class="actions__list">
+                                            <li class="act__item detail">
+                                                <a href="detail/{{ item.id }}">
+                                                    Detail
+                                                </a>
+                                            </li>
+                                            <li class="act__item delete">
+                                                <a href="/uploads/delete/{{ item.id }}">
+                                                    Delete
+                                                </a>
+                                            </li>
+                                            <li class="act__item download">
+                                                <a href="/uploads/download/{{ item.id }}">
+                                                    Download
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                     	{% endfor %}
                     {% endblock %}
                 </div>
@@ -102,9 +116,9 @@
                     <div class="sidebar__item">
                         <p><a class="link" href="/uploads">My UpCloud</a></p>
                     </div>
-                    <div class="sidebar__item">
+                    {# <div class="sidebar__item">
                         <p><a class="link" href="">Viewed</a></p>
-                    </div>
+                    </div> #}
                     {# <div class="sidebar__item">
                         <p><a class="link" href="">For developers</a></p>
                     </div> #}
@@ -131,36 +145,23 @@
                     History
                 </div>
                 <div class="sidebar__items">
-                    <div class="right__sidebar__item">
-                        <div class="item__content">
-                            <div class="histiry__date">
-                                <div>12.02.2021</div>
-                                <div class="action">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
+                    {% for record in history %}
+                        <div class="right__sidebar__item">
+                            <div class="item__content">
+                                <div class="histiry__date">
+                                    <div>{{ record.date }}</div>
+                                    {# <div class="action">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div> #}
+                                </div>
+                                <div class="history__action">
+                                    {{ record.file_name }} was uploaded.
                                 </div>
                             </div>
-                            <div class="history__action">
-                                Record added into the UpCloud.
-                            </div>
                         </div>
-                    </div>
-                    <div class="right__sidebar__item">
-                        <div class="item__content">
-                            <div class="histiry__date">
-                                <div>12.02.2021</div>
-                                <div class="action">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                            </div>
-                            <div class="history__action">
-                                Record added into the UpCloud.
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

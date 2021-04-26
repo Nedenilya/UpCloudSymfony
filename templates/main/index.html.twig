@@ -53,43 +53,55 @@
 
 	<div class="container">
     {% block main %}
-        <div class="uploads__table">
-            <div class="table">
-                <div class="table__head">
-                    <div class="title head__item">Title</div>
-                    <div class="extension head__item">Extension</div>
-                    <div class="updated head__item">Uploaded</div>
-                    <div class="size head__item">Size</div>
-                </div>
-                <div class="table__body">
-                    {% block table_items %}
-                    		<div class="body__item">
-	                            <a class="item__detail" href="item.html"></a>
-	                            <img class="item__icon" src="{{ asset('images/icons/txt.svg')}}">
-	                            <div class="item__title">Title</div>
-	                            <div class="item__extension">php</div>
-	                            <div class="item__updated">20.03.2021</div>
-	                            <div class="item__size">100kb</div>
-	                            <div class="item__act">
-	                                <span></span>
-	                                <span></span>
-	                                <span></span>
-	                                <div class="action__popap">
-	                                    <ul class="actions__list">
-	                                        <li class="act__item detail"><a href=>Detail</a></li>
-	                                        <li class="act__item delete"><a href="">Delete</a></li>
-	                                        <li class="act__item download"><a href="">Download</a></li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-	                        </div>
-                    {% endblock %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="account-info_container">
+                <div class="account_info">
+                    <div class="photo_block">
+                        <div class="photo">
+                            <img src="{{ app.user.profileimage }}">
+                        </div>
+                        <input type="file" id="fileid">
+                        <label for="fileid">Загрузить фотографию</label>
+                        <!-- <input type="file" name="photo" class="load-photo"> -->
+                    </div>
+                    <div class="info_container">
+
+                        <div class="info_block">
+                            <div class="info-item_block">
+                                <div class="info-item">
+                                    <p>Name: {{ app.user.getUsername }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info_block">
+                            <div class="info-item_block">
+                                <div class="info-item">
+                                    <p>E-mail: {{ app.user.getEmail }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info_block">
+                            <div class="info-item_block">
+                                <div class="info-item">
+                                    <p>Register date: {{ app.user.getRegDate }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {# <div class="info_block">
+                            <div class="info-item_block">
+                                <div class="info-item">
+                                    <p>Count of uploads: </p>
+                                </div>
+                            </div>
+                        </div> #}
+
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endif %}
     {% endblock %}
     </div>
-
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
     {% block left_sidebar %}
         <div class="left__sidebar__container">
             <div class="sidebar">
@@ -100,19 +112,19 @@
                     <div class="sidebar__item">
                         <p><a class="link" href="/uploads">My UpCloud</a></p>
                     </div>
-                    <div class="sidebar__item">
+                    {# <div class="sidebar__item">
                         <p><a class="link" href="">Viewed</a></p>
-                    </div>
+                    </div> #}
                     {# <div class="sidebar__item">
                         <p><a class="link" href="">For developers</a></p>
                     </div> #}
                 </div>
                 <div class="storage__stat__block">
                     <div class="storage__stat__scale">
-                        <div class="storage__stat__left"></div>
+                        <div class="storage__stat__left" style="width: {{ scale }}%"></div>
                     </div>
                     <div class="storage__stat__text">
-                        Used 150 mb of 1 gb
+                        Used {{ available_space }} of {{ all_space }}
                     </div>
                 </div>
             </div>
@@ -129,40 +141,28 @@
                     History
                 </div>
                 <div class="sidebar__items">
-                    <div class="right__sidebar__item">
-                        <div class="item__content">
-                            <div class="histiry__date">
-                                <div>12.02.2021</div>
-                                <div class="action">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
+                    {% for record in history %}
+                        <div class="right__sidebar__item">
+                            <div class="item__content">
+                                <div class="histiry__date">
+                                    <div>{{ record.date }}</div>
+                                    {# <div class="action">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div> #}
+                                </div>
+                                <div class="history__action">
+                                    {{ record.file_name }} was uploaded.
                                 </div>
                             </div>
-                            <div class="history__action">
-                                Record added into the UpCloud.
-                            </div>
                         </div>
-                    </div>
-                    <div class="right__sidebar__item">
-                        <div class="item__content">
-                            <div class="histiry__date">
-                                <div>12.02.2021</div>
-                                <div class="action">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                            </div>
-                            <div class="history__action">
-                                Record added into the UpCloud.
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     {% endblock %}
+{% endif %}
 {% endblock %}
 
 

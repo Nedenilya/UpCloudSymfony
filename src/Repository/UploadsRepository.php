@@ -32,8 +32,57 @@ class UploadsRepository extends ServiceEntityRepository
         );
 
         return $query->getResult()[0][1];
+    }  
+
+    public function findById($id)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT e
+            FROM App\Entity\Uploads e
+            WHERE e.id = '.$id
+        );
+
+        return $query->getResult();
     }
 
+    public function getFileNameById($id){
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT e.fileName, e.extension
+            FROM App\Entity\Uploads e
+            WHERE e.id = '.$id
+        );
+
+        return $query->getResult();
+    }
+
+    public function findByTitle($title)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT e
+            FROM App\Entity\Uploads e
+            WHERE e.fileName LIKE \''.$title.'%\''
+        );
+
+        return $query->getResult();
+    }
+
+    public function deleteItem($id)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'DELETE 
+            FROM App\Entity\Uploads e
+            WHERE e.id = '.$id
+        );
+        return $query->getResult();
+    }    
     // /**
     //  * @return Uploads[] Returns an array of Uploads objects
     //  */
