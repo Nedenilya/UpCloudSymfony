@@ -2,15 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\UploadsRepository;
+use App\Repository\ArchiveRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
- * @ORM\Entity(repositoryClass=UploadsRepository::class)
+ * @ORM\Entity(repositoryClass=ArchiveRepository::class)
  */
-class Uploads
+class Archive
 {
     /**
      * @ORM\Id
@@ -25,30 +24,13 @@ class Uploads
     }
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $userid;
-
-    public function getUserId(): ?int
-    {
-        return $this->userid;
-    }
-
-    public function setUserId(int $id): self
-    {
-        $this->userid = $id;
-
-        return $this;
-    }
-
-    /**
      * @ORM\Column(type="string", length=150, unique=false)
      *
      * @Assert\File(
      *     maxSize = "1024M")
      */
     private $fileName; 
- 
+
     public function setFileName(string $name): self
     {
         $this->fileName = $name;
@@ -59,26 +41,6 @@ class Uploads
     public function getFileName(): string
     {
         return $this->fileName;
-    }
-
-    /**
-     * @ORM\Column(type="string", length=150, unique=false)
-     *
-     * @Assert\File(
-     *     maxSize = "1024M")
-     */
-    private $hashName; 
-
-    public function setHashName(string $hashName): self
-    {
-        $this->hashName = $hashName;
-
-        return $this;
-    }
-
-    public function getHashName(): string
-    {
-        return $this->hashName;
     }
 
     /**
@@ -99,20 +61,39 @@ class Uploads
     }
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer", length=10, unique=false)
      */
-    private $isarchived;
-    public function isArchived(): ?bool
+    private $userid;
+
+    public function getUserId(): ?int
     {
-        return $this->isarchived;
+        return $this->userid;
     }
 
-    public function setArchived(bool $isarchived): self
+    public function setUserId(int $id): self
     {
-        $this->isarchived = $isarchived;
+        $this->userid = $id;
 
         return $this;
     }
+
+    /**
+     * @ORM\Column(type="integer", length=10, unique=false)
+     */
+    private $file_id;
+
+    public function setFileId(int $id): self
+    {
+        $this->file_id = $id;
+
+        return $this;
+    }
+
+    public function getFileId(): string
+    {
+        return $this->file_id;
+    }
+
 
     /**
      * @ORM\Column(type="string", length=50, unique=false)

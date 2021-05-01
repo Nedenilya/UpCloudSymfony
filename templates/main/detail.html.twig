@@ -34,17 +34,8 @@
             <div class="underhead__bar">
                 <div class="nav__path">
                     <h2 class="nav__item">
-                        Main
+                        Detail
                     </h2>
-                </div>
-                <div class="rightside__block">
-                    {# <div class="search__container">
-                        <div class="search__block">
-                            <img class="search__glass" src="{{ asset('images/search-glass.svg')}}">
-                            <input class="search__field" type="search">
-                        </div>
-                    </div> #}
-                    <img class="history__button" src="{{ asset('images/book.svg') }}">
                 </div>
             </div>
         </div>
@@ -53,56 +44,41 @@
 
 	<div class="container">
     {% block main %}
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div class="account-info_container">
-                <div class="account_info">
-                    <div class="photo_block">
-                        <div class="photo">
-                            <img src="{{ app.user.profileimage }}">
-                        </div>
-                        <input name="profile_image" type="file" id="fileid">
-                        <input type="hidden" id="user_id" value="{{ app.user.getId }}">
-                        <label for="fileid">Загрузить фотографию</label>
-                        <!-- <input type="file" name="photo" class="load-photo"> -->
-                    </div>
-                    <div class="info_container">
-
-                        <div class="info_block">
-                            <div class="info-item_block">
-                                <div class="info-item">
-                                    <p>Name: {{ app.user.getUsername }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info_block">
-                            <div class="info-item_block">
-                                <div class="info-item">
-                                    <p>E-mail: {{ app.user.getEmail }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info_block">
-                            <div class="info-item_block">
-                                <div class="info-item">
-                                    <p>Register date: {{ app.user.getRegDate }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        {# <div class="info_block">
-                            <div class="info-item_block">
-                                <div class="info-item">
-                                    <p>Count of uploads: </p>
-                                </div>
-                            </div>
-                        </div> #}
-
-                    </div>
+        <div class="detail_container">
+        {% for item in items %}
+            <div class="extension_block">
+                <div class="extension-img_block">
+                    <img src="/images/icons/{{ item.extension }}.svg">
                 </div>
             </div>
-        {% endif %}
+            <div class="detail-info_block">
+                <div class="detail-item">
+                    <div class="detail-title">Title</div>
+                    <div class="detail-info">{{ item.fileName }}.{{ item.extension }}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Size</div>
+                    <div class="detail-info">{{ item.size2 }}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Upload date</div>
+                    <div class="detail-info">{{ item.uploaded }}</div>
+                </div>
+            </div>
+            <hr>
+            <div class="detail-btns">
+                <a class="detail-btn" href="/uploads/download/{{ item.id }}">Download</a>
+                <a class="detail-btn" href="/uploads/archive/{{ item.id }}">Archive</a>
+                <a class="detail-btn" href="/uploads/delete/{{ item.id }}">Delete</a>
+            </div>
+            {% for message in app.flashes('message-archive') %}
+                <div class="alert center" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endfor %}
+        </div>
     {% endblock %}
     </div>
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
     {% block left_sidebar %}
         <div class="left__sidebar__container">
             <div class="sidebar">
@@ -145,6 +121,9 @@
                     History
                 </div>
                 <div class="sidebar__items">
+                    {% for message in app.flashes('message-history') %}
+                        <div class="alert center" role="alert">{{ message }}</div>
+                    {% endfor %}
                     {% for record in history %}
                         <div class="right__sidebar__item">
                             <div class="item__content">
@@ -166,7 +145,6 @@
             </div>
         </div>
     {% endblock %}
-{% endif %}
 {% endblock %}
 
 

@@ -15,23 +15,26 @@ class PageController extends AbstractController
      * @Route("/", name="main")
      */
     public function index(): Response
-    {       
-        $uploadsSize = $this->getDoctrine()
-            ->getRepository(Uploads::class)
-            ->findAllSize();
+    {    
+        $uploadsSize = explode(' ', $this->getDoctrine()
+                ->getRepository(Uploads::class)
+                ->findAllSize()
+            )[0];
 
         $history = $this->getDoctrine()
             ->getRepository(History::class)
             ->findAll();
+
+        $scale = round(explode(' ', $uploadsSize)[0]/1024/1024/1024, 0);
         
-        if($uploadsSize > 1000)
-            $uploadsSize = round($uploadsSize/1024, 1).' Mb';
-        elseif($uploadsSize > 1000000)
-            $uploadsSize = round($uploadsSize/1024/1024, 1).' Gb';
+        if($uploadsSize > 1000 && $uploadsSize < 1000000)
+            $uploadsSize = round($uploadsSize/1024, 0).' Kb';
+        elseif($uploadsSize > 1000000 && $uploadsSize < 1000000*1000)
+            $uploadsSize = round($uploadsSize/1024/1024, 1).' Mb';
+        elseif($uploadsSize > 1000000*1000)
+            $uploadsSize = round($uploadsSize/1024/1024/1024, 1).' Gb';
         else
             $uploadsSize = '0 Gb';
- 
-        $scale = round(explode(' ', $uploadsSize)[0]/10, 0);
 
         return $this->render('main/index.html.twig', [
             'available_space' => $uploadsSize,

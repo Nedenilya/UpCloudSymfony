@@ -55,4 +55,24 @@ $(document).ready(function(){
 	$('.item__act').on('click', function(e){
 		$(".action__popap", e.delegateTarget).toggleClass("active");
 	});
+
+	$('#fileid').change(function(){
+		var file_data = $('#fileid').prop('files')[0];
+		var form_data = new FormData();
+		form_data.append('file', file_data);
+		form_data.append('user_id', $('#user_id').val());
+		$.ajax({
+			url: "/upload_avatar",
+			type: "POST",
+			data: form_data,
+			contentType: false,
+			cache: false,
+			processData:false,
+			success: function(data){
+				window.location = window.location;
+			}
+		});
+
+	});
+
 });

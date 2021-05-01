@@ -66,7 +66,7 @@ class User implements UserInterface
         $this->name = $name;
 
         return $this;
-    }
+    }        
 
     public function getProfileImage(): ?string
     {

@@ -14,6 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UploadsRepository extends ServiceEntityRepository
 {
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Uploads::class);
@@ -22,18 +23,22 @@ class UploadsRepository extends ServiceEntityRepository
     /**
      * @return integer
      */
-    public function findAllSize()
+    public function findAllSize($id)
     {
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
             'SELECT SUM(e.size)
-            FROM App\Entity\Uploads e'
+            FROM App\Entity\Uploads e
+            WHERE e.userid='.$id
         );
 
         return $query->getResult()[0][1];
     }  
 
+    /**
+     * @return Uploads Return Uploads object
+     */
     public function findById($id)
     {
         $entityManager = $this->getEntityManager();
@@ -47,11 +52,24 @@ class UploadsRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findAll2($id)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT e
+            FROM App\Entity\Uploads e
+            WHERE e.isarchived=false AND e.userid='.$id
+        );
+
+        return $query->getResult();
+    }
+
     public function getFileNameById($id){
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
-            'SELECT e.fileName, e.extension
+            'SELECT e.hashName
             FROM App\Entity\Uploads e
             WHERE e.id = '.$id
         );
@@ -59,14 +77,14 @@ class UploadsRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function findByTitle($title)
+    public function findByTitle($title, $id)
     {
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
             'SELECT e
             FROM App\Entity\Uploads e
-            WHERE e.fileName LIKE \''.$title.'%\''
+            WHERE e.userid='.$id.' AND e.isarchived=false AND e.fileName LIKE \''.$title.'%\''
         );
 
         return $query->getResult();

@@ -14,12 +14,24 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class HistoryRepository extends ServiceEntityRepository
 {
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, History::class);
     }
 
-    
+    public function findAll2($id){
+         
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT e
+            FROM App\Entity\History e
+            WHERE e.userid='.$id
+        );
+
+        return $query->getResult();
+    }
 
     // /**
     //  * @return History[] Returns an array of History objects

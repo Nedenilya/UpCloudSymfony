@@ -30,7 +30,17 @@ class History
     /**
      * @ORM\Column(type="integer")
      */
+    private $userid;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
     private $file_id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $message;
 
     public function getId(): ?int
     {
@@ -49,6 +59,20 @@ class History
         return $this;
     }
 
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): self
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+
     public function getDate(): ?string
     {
         return $this->date;
@@ -57,6 +81,18 @@ class History
     public function setDate(string $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getUserId(): ?int
+    {
+        return $this->userid;
+    }
+
+    public function setUserId(int $id): self
+    {
+        $this->userid = $id;
 
         return $this;
     }

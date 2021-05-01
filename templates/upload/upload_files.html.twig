@@ -54,21 +54,24 @@
                     <p><a class="link" href="/upload_files">Upload</a></p>
                 </div>
                 <div class="sidebar__item">
-                    <p><a href="/uploads">My UpCloud</a></p>
+                    <p><a class="link" href="/uploads">My UpCloud</a></p>
                 </div>
                 <div class="sidebar__item">
+                    <p><a class="link" href="/archive">Archive</a></p>
+                </div>
+                {# <div class="sidebar__item">
                     <p>Viewed</p>
                 </div>
                 <div class="sidebar__item">
                     <p>For developers</p>
-                </div>
+                </div> #}
             </div>
             <div class="storage__stat__block">
                 <div class="storage__stat__scale">
-                    <div class="storage__stat__left"></div>
+                    <div class="storage__stat__left" style="width: {{ scale }}%"></div>
                 </div>
                 <div class="storage__stat__text">
-                    Used 150 mb of 1 gb
+                    Used {{ available_space }} of {{ all_space }}
                 </div>
             </div>
         </div>
@@ -82,7 +85,7 @@
         <div class="upload_container">
             {% block upload %}
             <div class="info-block__input-block">
-                <p id="to_hide" class="input-block__text">Drop files here or</p>
+                <p id="to_hide" class="input-block__text">Choose file to upload</p>
 
                 <div class="upload__files">
                     {{ form_widget(uploadForm) }}

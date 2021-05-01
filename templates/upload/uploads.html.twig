@@ -34,7 +34,7 @@
             <div class="underhead__bar">
                 <div class="nav__path">
                     <h2 class="nav__item">
-                        Main {{ filename }}
+                       Main
                     </h2>
                 </div>
                 <div class="rightside__block">
@@ -64,6 +64,9 @@
                     <div class="size head__item">Size</div>
                 </div>
                 <div class="table__body">
+                    {% for message in app.flashes('message') %}
+                        <div class="alert center" role="alert">{{ message }}</div>
+                    {% endfor %}
                     {% block table_items %}
                     	{% for item in items %}
                     		<div class="body__item">
@@ -72,7 +75,7 @@
                                 <div class="item__title">{{ item.fileName }}</div>
                                 <div class="item__extension">{{ item.extension }}</div>
                                 <div class="item__updated">{{ item.uploaded }}</div>
-                                <div class="item__size">{{ item.size }}b</div>
+                                <div class="item__size">{{ item.size2 }}</div>
                                 <div class="item__act">
                                     <span></span>
                                     <span></span>
@@ -80,7 +83,7 @@
                                     <div class="action__popap">
                                         <ul class="actions__list">
                                             <li class="act__item detail">
-                                                <a href="detail/{{ item.id }}">
+                                                <a href="/uploads/detail/{{ item.id }}">
                                                     Detail
                                                 </a>
                                             </li>
@@ -116,6 +119,9 @@
                     <div class="sidebar__item">
                         <p><a class="link" href="/uploads">My UpCloud</a></p>
                     </div>
+                    <div class="sidebar__item">
+                        <p><a class="link" href="/archive">Archive</a></p>
+                    </div>
                     {# <div class="sidebar__item">
                         <p><a class="link" href="">Viewed</a></p>
                     </div> #}
@@ -145,6 +151,9 @@
                     History
                 </div>
                 <div class="sidebar__items">
+                    {% for message in app.flashes('message-history') %}
+                        <div class="alert center" role="alert">{{ message }}</div>
+                    {% endfor %}
                     {% for record in history %}
                         <div class="right__sidebar__item">
                             <div class="item__content">
@@ -157,7 +166,7 @@
                                     </div> #}
                                 </div>
                                 <div class="history__action">
-                                    {{ record.file_name }} was uploaded.
+                                    {{ record.file_name }} {{ record.message }}.
                                 </div>
                             </div>
                         </div>
