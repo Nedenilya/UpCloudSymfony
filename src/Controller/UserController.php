@@ -26,21 +26,22 @@ class UserController extends AbstractController
      */
     public function upload_avatar(): Response
     {   
+        $user = $this->getUser();
         $uploads = $this->getDoctrine()
             ->getRepository(Uploads::class)
-            ->findAll();
+            ->findAll2($user->getId());
     
         
         $uploadsSize = explode(' ', $this->getDoctrine()
             ->getRepository(Uploads::class)
-            ->findAllSize()
+            ->findAllSize($user->getId())
         )[0];
 
         $history = $this->getDoctrine()
             ->getRepository(History::class)
-            ->findAll();
+            ->findAll2($user->getId());
             
-        $scale = round(explode(' ', $uploadsSize)[0]/1024/1024/1024, 0);
+        $scale = ($uploadsSize/1024/1024/1024)*100;
 
         if($uploadsSize > 1000 && $uploadsSize < 1000000)
             $uploadsSize = round($uploadsSize/1024, 0).' Kb';

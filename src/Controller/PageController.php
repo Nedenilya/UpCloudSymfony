@@ -16,32 +16,46 @@ class PageController extends AbstractController
      */
     public function index(): Response
     {    
-        $uploadsSize = explode(' ', $this->getDoctrine()
-                ->getRepository(Uploads::class)
-                ->findAllSize()
-            )[0];
+        $user = $this->getUser();
+        // $uploadsSize = '';
+        // $history = null;
+        // $scale = 0;
 
-        $history = $this->getDoctrine()
-            ->getRepository(History::class)
-            ->findAll();
+        if($user){
+            $uploadsSize = explode(' ', $this->getDoctrine()
+                    ->getRepository(Uploads::class)
+                    ->findAllSize($user->getId())
+                )[0];
 
-        $scale = round(explode(' ', $uploadsSize)[0]/1024/1024/1024, 0);
-        
-        if($uploadsSize > 1000 && $uploadsSize < 1000000)
-            $uploadsSize = round($uploadsSize/1024, 0).' Kb';
-        elseif($uploadsSize > 1000000 && $uploadsSize < 1000000*1000)
-            $uploadsSize = round($uploadsSize/1024/1024, 1).' Mb';
-        elseif($uploadsSize > 1000000*1000)
-            $uploadsSize = round($uploadsSize/1024/1024/1024, 1).' Gb';
-        else
-            $uploadsSize = '0 Gb';
+            $history = $this->getDoctrine()
+                ->getRepository(History::class)
+                ->findAll2($user->getId());
 
-        return $this->render('main/index.html.twig', [
-            'available_space' => $uploadsSize,
-            'all_space' => '1 Gb',
-            'scale' => $scale,
-            'history' => $history
-        ]);
+        $scale = ($uploadsSize/1024/1024/1024)*100;
+            
+            if($uploadsSize > 1000 && $uploadsSize < 1000000)
+                $uploadsSize = round($uploadsSize/1024, 0).' Kb';
+            elseif($uploadsSize > 1000000 && $uploadsSize < 1000000*1000)
+                $uploadsSize = round($uploadsSize/1024/1024, 1).' Mb';
+            elseif($uploadsSize > 1000000*1000)
+                $uploadsSize = round($uploadsSize/1024/1024/1024, 1).' Gb';
+            else
+                $uploadsSize = '0 Gb';
+
+            return $this->render('main/index.html.twig', [
+                'available_space' => $uploadsSize,
+                'all_space' => '1 Gb',
+                'scale' => $scale,
+                'history' => $history
+            ]);
+        }
+        return $this->redirectToRoute('app_register');
+        // return $this->render('registration/register.html.twig', [
+        //         'available_space' => $uploadsSize,
+        //         'all_space' => '1 Gb',
+        //         'scale' => $scale,
+        //         'history' => $history
+        //     ]);
     }
 
     /**

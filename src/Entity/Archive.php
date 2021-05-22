@@ -129,6 +129,25 @@ class Archive
         return $this->extension;
     }
 
+
+    /**
+     * @ORM\Column(type="string", length=35, unique=false)
+     */
+    private $extension2;
+
+    public function setExtension2(string $extension): self
+    {
+        $this->extension2 = $extension;
+
+        return $this;
+    }
+
+    public function getExtension2(): string
+    {
+        return $this->extension2;
+    }
+
+
     /**
      * @ORM\Column(type="string", length=35, unique=false)
      */

@@ -38,7 +38,7 @@ class ArchiveController extends AbstractController
                 ->getRepository(History::class)
                 ->findAll2($user->getId());
         
-        $scale = round(explode(' ', $uploadsSize)[0]/1024/1024/1024, 0);
+        $scale = ($uploadsSize/1024/1024/1024)*100;
 
         if($uploadsSize > 1000 && $uploadsSize < 1000000)
             $uploadsSize = round($uploadsSize/1024, 0).' Kb';
@@ -70,6 +70,7 @@ class ArchiveController extends AbstractController
      * @Route("/archive/delete/{id}", name="archive_delete")
      */
     public function delete($id){
+        $user = $this->getUser();
         $entityManager = $this->getDoctrine()->getManager();
 
         $file = $this->getDoctrine()
@@ -83,21 +84,31 @@ class ArchiveController extends AbstractController
         $archive = $this->getDoctrine()
                 ->getRepository(Archive::class)
                 ->findAll2($user->getId());
-            
+
+        $archiveUplId = $this->getDoctrine()
+                ->getRepository(Archive::class)
+                ->find($id);
+
         $uploadsSize = explode(' ', $this->getDoctrine()
                 ->getRepository(Uploads::class)
                 ->findAllSize($user->getId())
             )[0];
 
+        $upload = $entityManager->getRepository(Uploads::class)
+                ->find($archiveUplId->getFileId());
+
         $history2 = new History();
 
         $date = date("d.m.Y").'';
+        $upload->setArchived(false);
+        $history2->setUserId($user->getId());
         $history2->setDate($date);
         $history2->setFileId($file[0]->getFileId());
         $history2->setFileName($file[0]->getFileName().'.'.$file[0]->getExtension());
         $history2->setMessage('was deleted from archive');
 
-        $scale = round(explode(' ', $uploadsSize)[0]/1024/1024/1024, 0);
+        unlink($this->getParameter('archive_directory').'/'.$upload->getHashName());
+        $scale = ($uploadsSize/1024/1024/1024)*100;
 
         if($uploadsSize > 1000 && $uploadsSize < 1000000)
             $uploadsSize = round($uploadsSize/1024, 0).' Kb';
@@ -117,7 +128,7 @@ class ArchiveController extends AbstractController
 
         $history = $this->getDoctrine()
                     ->getRepository(History::class)
-                    ->findAll();
+                    ->findAll2($user->getId());
         if (!$history) {
             $this->addFlash('message-history', 'You have no history yet :)');
         }

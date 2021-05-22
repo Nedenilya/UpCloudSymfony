@@ -7,15 +7,19 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class FilesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('fileName', 
-                FileType::class
-            );
+        $builder->add('fileName', FileType::class, [
+            'constraints' => [
+                new File([
+                    'maxSize' => '1024m'
+                    ])
+            ]
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
